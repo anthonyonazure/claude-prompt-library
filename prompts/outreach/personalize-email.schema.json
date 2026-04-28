@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "subject": {
+      "type": "string",
+      "description": "3-7 words. No emoji, no all-caps, no Re:."
+    },
+    "body": {
+      "type": "string",
+      "description": "60-90 words. Plain text, paragraphs separated by blank lines."
+    },
+    "specificReference": {
+      "type": "string",
+      "description": "The specific thing about this prospect you referenced. If none was available in input, write 'none-available' and the body should be deliberately generic."
+    },
+    "ask": {
+      "type": "string",
+      "description": "The single specific ask in the email."
+    },
+    "rationale": {
+      "type": "string",
+      "description": "1-2 sentences for the human reviewer."
+    }
+  },
+  "required": ["subject", "body", "specificReference", "ask", "rationale"]
+}
