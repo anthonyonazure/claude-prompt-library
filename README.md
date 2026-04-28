@@ -27,20 +27,20 @@ Run `company-research.md` on a real RIA prospect:
 ```json
 {
   "industry": {
-    "sector": "Wealth management / SEC-registered investment advisor (RIA)",
-    "valueProp": "Fiduciary financial planning specialized for outdoor-industry founders",
-    "competitors": ["Mariner Wealth Advisors", "Mercer Advisors", "boutique sector-focused RIAs"],
+    "sector": "Registered Investment Advisory (RIA) / Wealth Management",
+    "valueProp": "Boutique mid-market RIA specializing in outdoor industry founders — a niche HNW/UHNW client base with concentrated equity and liquidity-event complexity",
+    "competitors": ["Cetera", "Focus Financial Partners", "Mariner Wealth Advisors", "Savant Wealth Management"],
     "inferred": false
   },
   "recentSignals": [
     {
-      "signal": "Hired their first compliance lead in October",
-      "implication": "Building out compliance infrastructure suggests AUM growth and regulatory maturity — typical trigger for compliance workflow tooling."
+      "signal": "Hired first dedicated compliance lead in October",
+      "implication": "Firm is formalizing compliance infrastructure for the first time — classic trigger for workflow tooling purchases; new compliance hire will immediately feel the pain of manual processes and will want to own a tool decision early."
     }
   ],
   "tier": "A",
-  "outreachAngle": "Reference the October compliance hire and the open ops roles together: 'Most RIAs we work with bring on a compliance lead and discover their workflow tooling can't keep up with the new oversight cadence...'",
-  "confidence": 0.78
+  "outreachAngle": "Trailhead just brought on its first compliance lead the same month you announced two new office locations — that's a tough combination to land in on day one. We work with several single-compliance-officer RIAs that went multi-office and built their SEC exam readiness workflows in our platform before their first cross-office review. Worth a 20-minute conversation before the Q1 audit prep cycle kicks off?",
+  "confidence": 0.82
 }
 ```
 
@@ -51,13 +51,13 @@ Eval suite output:
 ```
 $ pnpm eval
 
-[PASS] lead-tier.md :: clear A — VP Eng at fit company with hiring signal (1842ms)
-[PASS] lead-tier.md :: clear C — wrong title, wrong industry, no signal (1601ms)
-[PASS] lead-tier.md :: ambiguous B — title is senior but company is tiny (2104ms)
-[PASS] personalize-email.md :: specific reference present — must be used (3217ms)
-[PASS] personalize-email.md :: no specific reference available — must admit it (2455ms)
-[PASS] company-research.md :: clear A — known company, real signal, fit angle (4108ms)
-[PASS] company-research.md :: no signal — should not invent one (2890ms)
+[PASS] company-research.md :: clear A — known company, real signal, fit angle (16684ms)
+[PASS] company-research.md :: no signal — should not invent one (6002ms)
+[PASS] lead-tier.md :: clear A — VP Eng at fit company with hiring signal (4100ms)
+[PASS] lead-tier.md :: clear C — wrong title, wrong industry, no signal (3912ms)
+[PASS] lead-tier.md :: ambiguous B — title is senior but company is tiny (3270ms)
+[PASS] personalize-email.md :: specific reference present — must be used (7406ms)
+[PASS] personalize-email.md :: no specific reference available — must admit it (12964ms)
 
 7/7 cases passed
 ```
