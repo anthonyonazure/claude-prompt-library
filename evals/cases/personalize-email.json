@@ -1,0 +1,39 @@
+{
+  "prompt": "prompts/outreach/personalize-email.md",
+  "cases": [
+    {
+      "name": "specific reference present — must be used",
+      "input": {
+        "lead": {
+          "name": "Sara Kapoor",
+          "title": "Head of Operations",
+          "company": "Northwind Tea Co.",
+          "linkedinPost": "Posted Tuesday: 'Switched our shipping carrier for the third time in 18 months. Anyone solved this?'"
+        },
+        "offer": "Carrier-comparison engine for SMB shippers; 2-week setup, no contract"
+      },
+      "expectations": [
+        { "kind": "minLength", "path": "subject", "value": 3 },
+        { "kind": "maxLength", "path": "subject", "value": 80 },
+        { "kind": "minLength", "path": "body", "value": 250 },
+        { "kind": "maxLength", "path": "body", "value": 700 },
+        { "kind": "contains", "path": "specificReference", "value": "carrier" }
+      ]
+    },
+    {
+      "name": "no specific reference available — must admit it",
+      "input": {
+        "lead": {
+          "name": "Generic Buyer",
+          "title": "Director of Marketing",
+          "company": "Acme Inc",
+          "linkedinPost": null
+        },
+        "offer": "Email deliverability monitoring tool"
+      },
+      "expectations": [
+        { "kind": "equals", "path": "specificReference", "value": "none-available" }
+      ]
+    }
+  ]
+}

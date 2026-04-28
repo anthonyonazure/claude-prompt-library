@@ -1,0 +1,42 @@
+{
+  "prompt": "prompts/research/company-research.md",
+  "cases": [
+    {
+      "name": "clear A — known company, real signal, fit angle",
+      "input": {
+        "company": {
+          "name": "Trailhead Financial",
+          "url": "https://trailhead-financial.example",
+          "publicDescription": "Mid-market RIA serving outdoor industry founders. Recently announced expansion to Denver and Salt Lake City offices.",
+          "knownLeadership": [
+            "Anjali Rao, Founder/CEO",
+            "Marcus DePaul, Head of Client Operations"
+          ],
+          "recentNews": "Hired their first compliance lead in October; posted three open roles on the operations team last week."
+        },
+        "ourOffer": "Compliance-focused workflow software for SEC-registered RIAs. Designed for firms with 50-500 client households."
+      },
+      "expectations": [
+        { "kind": "oneOf", "path": "tier", "values": ["A", "B"] },
+        { "kind": "minLength", "path": "outreachAngle", "value": 30 },
+        { "kind": "gte", "path": "confidence", "value": 0.5 }
+      ]
+    },
+    {
+      "name": "no signal — should not invent one",
+      "input": {
+        "company": {
+          "name": "Pinecrest Hardware",
+          "url": null,
+          "publicDescription": "Local hardware store",
+          "knownLeadership": [],
+          "recentNews": null
+        },
+        "ourOffer": "Compliance workflow software for SEC-registered RIAs."
+      },
+      "expectations": [
+        { "kind": "equals", "path": "tier", "value": "C" }
+      ]
+    }
+  ]
+}

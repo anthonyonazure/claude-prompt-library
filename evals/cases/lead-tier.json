@@ -1,0 +1,70 @@
+{
+  "prompt": "prompts/classify/lead-tier.md",
+  "cases": [
+    {
+      "name": "clear A — VP Eng at fit company with hiring signal",
+      "input": {
+        "lead": {
+          "name": "Priya Sharma",
+          "title": "VP Engineering",
+          "company": "Telos Logistics",
+          "companySize": "450 employees",
+          "industry": "3PL / freight forwarding",
+          "signal": "Posted on LinkedIn last week: 'We are tripling our engineering team this year. If you've shipped data infra at scale, talk to us.'",
+          "email": "priya@telos-log.example",
+          "linkedin": "https://linkedin.com/in/example"
+        },
+        "offer": "Data observability platform for high-volume operational pipelines"
+      },
+      "expectations": [
+        { "kind": "oneOf", "path": "tier", "values": ["A"] },
+        { "kind": "equals", "path": "criteriaMet.decisionMakerTitle", "value": true },
+        { "kind": "equals", "path": "criteriaMet.buyingSignal", "value": true },
+        { "kind": "equals", "path": "nextStep", "value": "outreach-now" },
+        { "kind": "gte", "path": "confidence", "value": 0.7 }
+      ]
+    },
+    {
+      "name": "clear C — wrong title, wrong industry, no signal",
+      "input": {
+        "lead": {
+          "name": "Mark Travers",
+          "title": "Sales Associate",
+          "company": "Bright Smiles Dental",
+          "companySize": "12 employees",
+          "industry": "dentistry",
+          "signal": "none known",
+          "email": "info@brightsmiles.example",
+          "linkedin": null
+        },
+        "offer": "Data observability platform for high-volume operational pipelines"
+      },
+      "expectations": [
+        { "kind": "equals", "path": "tier", "value": "C" },
+        { "kind": "equals", "path": "criteriaMet.decisionMakerTitle", "value": false },
+        { "kind": "equals", "path": "criteriaMet.companyFit", "value": false },
+        { "kind": "oneOf", "path": "nextStep", "values": ["skip", "monitor"] }
+      ]
+    },
+    {
+      "name": "ambiguous B — title is senior but company is tiny",
+      "input": {
+        "lead": {
+          "name": "Jay Okafor",
+          "title": "Chief Technology Officer",
+          "company": "Hummingbird Analytics",
+          "companySize": "4 employees",
+          "industry": "analytics consulting",
+          "signal": "No recent activity",
+          "email": "jay@hummingbird.example",
+          "linkedin": "https://linkedin.com/in/example"
+        },
+        "offer": "Enterprise data governance suite, $80k starting"
+      },
+      "expectations": [
+        { "kind": "oneOf", "path": "tier", "values": ["B", "C"] },
+        { "kind": "minLength", "path": "reasoning.counterEvidence.0", "value": 5 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "type": "object",
+  "properties": {
+    "industry": {
+      "type": "object",
+      "properties": {
+        "sector": { "type": "string" },
+        "valueProp": { "type": "string" },
+        "competitors": { "type": "array", "items": { "type": "string" } },
+        "inferred": { "type": "boolean", "description": "True if the sector/valueProp/competitors were inferred rather than directly given" }
+      },
+      "required": ["sector", "valueProp", "competitors", "inferred"]
+    },
+    "recentSignals": {
+      "type": "array",
+      "description": "Recent events that affect buying readiness. Empty array if none known.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "signal": { "type": "string" },
+          "implication": { "type": "string" }
+        },
+        "required": ["signal", "implication"]
+      }
+    },
+    "buyingCommittee": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "role": { "type": "string", "enum": ["economic", "technical", "user", "gatekeeper"] },
+          "likelyTitle": { "type": "string" }
+        },
+        "required": ["role", "likelyTitle"]
+      }
+    },
+    "culturalFit": {
+      "type": "object",
+      "properties": {
+        "tone": { "type": "string", "enum": ["formal", "scrappy", "mission-driven", "growth-aggressive", "conservative", "mixed"] },
+        "evidence": { "type": "string" }
+      },
+      "required": ["tone", "evidence"]
+    },
+    "tier": { "type": "string", "enum": ["A", "B", "C"] },
+    "tierRationale": { "type": "string" },
+    "outreachAngle": {
+      "type": "string",
+      "description": "Specific, falsifiable angle for first contact. Required for A/B; empty string for C."
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+  },
+  "required": ["industry", "recentSignals", "buyingCommittee", "culturalFit", "tier", "tierRationale", "outreachAngle", "confidence"]
+}
