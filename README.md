@@ -1,5 +1,6 @@
 # claude-prompt-library
 
+[![CI](https://github.com/anthonyonazure/claude-prompt-library/actions/workflows/ci.yml/badge.svg)](https://github.com/anthonyonazure/claude-prompt-library/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node](https://img.shields.io/badge/node-%3E%3D20-339933)](https://nodejs.org)
 [![Built with Claude](https://img.shields.io/badge/built%20with-Claude-cc785c)](https://anthropic.com)
@@ -108,6 +109,19 @@ mkdir -p prompts/your-category
 # Write evals/cases/your-prompt.json
 pnpm eval --prompt your-prompt
 ```
+
+## Tests
+
+22 unit tests cover the prompt loader (frontmatter parsing, schema discovery, error cases), the eval expectation matcher (every supported expectation kind), and a structural check that every shipped prompt has a valid sibling schema and required frontmatter. Runs in CI on every push and pull request.
+
+```bash
+pnpm test         # unit tests, no API spend
+pnpm test:watch   # watch mode
+pnpm typecheck    # tsc --noEmit
+pnpm eval         # full eval suite — calls Anthropic API
+```
+
+CI runs typecheck + unit tests on every push. The full eval (`pnpm eval`) hits the live API and must be run manually.
 
 ## License
 
