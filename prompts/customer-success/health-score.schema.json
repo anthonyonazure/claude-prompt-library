@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "properties": {
+    "overallScore": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Equal to the minimum of the four dimension scores."
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "adoption": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "engagement": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "outcome": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "renewalMomentum": { "type": "integer", "minimum": 0, "maximum": 100 }
+      },
+      "required": ["adoption", "engagement", "outcome", "renewalMomentum"]
+    },
+    "outcomeUnknown": {
+      "type": "boolean",
+      "description": "True when input lacks explicit business outcome data and outcome was scored at default 50."
+    },
+    "atRisk": {
+      "type": "boolean",
+      "description": "True if any dimension < 40."
+    },
+    "atRiskReasons": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "recommendedAction": {
+      "type": "object",
+      "properties": {
+        "action": { "type": "string", "description": "Specific action the CSM should take this week." },
+        "rationale": { "type": "string" },
+        "owner": { "type": "string", "enum": ["csm", "ae", "support", "product", "exec"] }
+      },
+      "required": ["action", "rationale", "owner"]
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+  },
+  "required": ["overallScore", "dimensions", "outcomeUnknown", "atRisk", "atRiskReasons", "recommendedAction", "confidence"]
+}

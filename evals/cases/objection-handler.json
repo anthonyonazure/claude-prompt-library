@@ -1,0 +1,25 @@
+{
+  "prompt": "prompts/sales/objection-handler.md",
+  "cases": [
+    {
+      "name": "clear price objection with implicit fit",
+      "input": {
+        "objection": "Look, this looks great but $4,500/month is way over what we budgeted. We're a 30-person company and we usually pay $500-800 for tools.",
+        "context": "Mid-funnel call after positive demo. Prospect is the Head of Operations."
+      },
+      "expectations": [
+        { "kind": "equals", "path": "classification.primary", "value": "price" }
+      ]
+    },
+    {
+      "name": "stall masking authority issue",
+      "input": {
+        "objection": "Let me think about it and I'll get back to you next week.",
+        "context": "First demo. Prospect gave no other reaction. We later learned their CEO does all software approvals."
+      },
+      "expectations": [
+        { "kind": "oneOf", "path": "classification.primary", "values": ["stall", "authority"] }
+      ]
+    }
+  ]
+}

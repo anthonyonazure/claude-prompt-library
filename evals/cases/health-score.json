@@ -1,0 +1,41 @@
+{
+  "prompt": "prompts/customer-success/health-score.md",
+  "cases": [
+    {
+      "name": "at-risk pre-renewal customer",
+      "input": {
+        "account": {
+          "name": "Acme Logistics",
+          "arr": 60000,
+          "renewalDate": "30 days away",
+          "stage": "pre-renewal",
+          "usage": "DAU dropped 40% over the last 6 weeks. Only 1 of 5 paid features being used. Champion left the company two months ago.",
+          "interactions": "Two unresolved support tickets. Last QBR was tense — they asked about export options.",
+          "outcomes": "Originally signed for shipping-cost reduction; reduction has plateaued."
+        }
+      },
+      "expectations": [
+        { "kind": "equals", "path": "atRisk", "value": true },
+        { "kind": "lte", "path": "overallScore", "value": 50 }
+      ]
+    },
+    {
+      "name": "healthy steady-state customer",
+      "input": {
+        "account": {
+          "name": "Mountain Apparel Co.",
+          "arr": 35000,
+          "renewalDate": "8 months away",
+          "stage": "steady",
+          "usage": "Daily active across 4 of 5 features. Adoption breadth growing. Hit their stated success metric last quarter.",
+          "interactions": "Standard cadence — no escalations. Recent NPS = 9.",
+          "outcomes": "Reduced fulfillment time by 28% per their own measurement."
+        }
+      },
+      "expectations": [
+        { "kind": "equals", "path": "atRisk", "value": false },
+        { "kind": "gte", "path": "overallScore", "value": 60 }
+      ]
+    }
+  ]
+}

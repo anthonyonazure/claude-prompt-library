@@ -1,0 +1,25 @@
+{
+  "prompt": "prompts/summarize/meeting-summary.md",
+  "cases": [
+    {
+      "name": "meeting with clear decisions and owners",
+      "input": {
+        "transcript": "Anjali: Okay, I think we've kicked this around enough. Marcus, can you take ownership of moving the export pipeline to Postgres? Marcus: Yeah, I can have a draft architecture doc by Friday. Anjali: Great, that's decided then — we're moving off Mongo for the export pipeline. Anjali: One open thing — we still don't know whether the new compliance lead will own SOC2 prep or whether that stays with engineering. We'll table that for the next staff meeting. Anjali: Lastly — Marcus, please ship the ICS-export bug fix today, it's been open three weeks. Marcus: Will do, before EOD."
+      },
+      "expectations": [
+        { "kind": "gte", "path": "decisions.0.decision", "value": 0 },
+        { "kind": "gte", "path": "actionItems.0.task", "value": 0 },
+        { "kind": "minLength", "path": "narrativeSummary", "value": 50 }
+      ]
+    },
+    {
+      "name": "meeting that decided nothing",
+      "input": {
+        "transcript": "Tom: So I wanted to discuss whether we should move our analytics off Heap. Sarah: I have thoughts but maybe we should circle back. Tom: Yeah, let's revisit. Tom: Anyone have updates? *pause* Okay, see everyone next week."
+      },
+      "expectations": [
+        { "kind": "minLength", "path": "narrativeSummary", "value": 30 }
+      ]
+    }
+  ]
+}

@@ -5,7 +5,7 @@
 [![Node](https://img.shields.io/badge/node-%3E%3D20-339933)](https://nodejs.org)
 [![Built with Claude](https://img.shields.io/badge/built%20with-Claude-cc785c)](https://anthropic.com)
 
-**Production-ready Claude prompts with structured outputs and a deterministic eval harness.** Targeted at sales, research, and outreach workflows.
+**Production-ready Claude prompts with structured outputs and a deterministic eval harness.** Ten prompts spanning the B2B revenue and ops stack — sales, customer success, support, internal ops.
 
 > **Watch a 60-second walkthrough →** _(Loom)_
 
@@ -15,13 +15,32 @@ So when you tweak a prompt, you can immediately see whether you improved or regr
 
 ## What's in here
 
+### Sales & marketing
+
 | Prompt | Purpose | Pattern |
 |--------|---------|---------|
 | [`prompts/research/company-research.md`](prompts/research/company-research.md) | Pre-outreach B2B company research with tier (A/B/C) + outreach angle | 6-phase chain-of-thought |
 | [`prompts/classify/lead-tier.md`](prompts/classify/lead-tier.md) | A/B/C lead classification with mandatory counter-evidence | Self-check / cynical review |
 | [`prompts/outreach/personalize-email.md`](prompts/outreach/personalize-email.md) | Personalized cold email — no template smell | Anti-template guards |
+| [`prompts/sales/objection-handler.md`](prompts/sales/objection-handler.md) | Real-time objection classification + 2-3 scripted responses | Type-aware response strategy |
+| [`prompts/sales/proposal-generator.md`](prompts/sales/proposal-generator.md) | Structured B2B proposal — willing to **disqualify** when off-the-shelf fits | Scope-honest, anti-puffery |
+| [`prompts/sales/demo-follow-up.md`](prompts/sales/demo-follow-up.md) | 24-hour post-demo email + internal CRM notes + risk flags | Forecastable-by-evidence guard |
 
-Each prompt has a sibling `.schema.json` defining its tool-use input schema, and at least two eval cases under `evals/cases/` covering the happy path and a known failure mode.
+### Customer success & support
+
+| Prompt | Purpose | Pattern |
+|--------|---------|---------|
+| [`prompts/customer-success/health-score.md`](prompts/customer-success/health-score.md) | Customer health across 4 dimensions (min, not avg) + recommended action | "Health = weakest dimension" |
+| [`prompts/support/ticket-triage.md`](prompts/support/ticket-triage.md) | Severity / category / sentiment / route + first-draft response | Prompt-injection-aware triage |
+
+### Internal ops & content
+
+| Prompt | Purpose | Pattern |
+|--------|---------|---------|
+| [`prompts/summarize/meeting-summary.md`](prompts/summarize/meeting-summary.md) | Decisions / action items / open questions from transcript | Decision ≠ discussion guard |
+| [`prompts/content/content-brief.md`](prompts/content/content-brief.md) | Content brief that a freelancer can execute without a kickoff call | Sharp angle + out-of-scope |
+
+Every prompt has a sibling `.schema.json` defining its tool-use input schema, plus eval cases under `evals/cases/` covering at least the happy path and a known failure mode (often a prompt-injection or "should disqualify" case to verify the prompt's defensive guards).
 
 ## Sample output
 

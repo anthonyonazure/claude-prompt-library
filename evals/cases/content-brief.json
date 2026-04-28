@@ -1,0 +1,32 @@
+{
+  "prompt": "prompts/content/content-brief.md",
+  "cases": [
+    {
+      "name": "specific blog post for ops audience",
+      "input": {
+        "topic": "Why our shipping-carrier comparison engine takes 2 weeks to set up but pays back in the first quarter",
+        "audience": "Head of Operations at SMB e-commerce shippers ($1-10M revenue, 5-30 employees), tired of switching carriers every 18 months",
+        "format": "blog-post",
+        "wordCountTarget": "900-1100",
+        "primaryCta": "Schedule a 20-minute carrier audit"
+      },
+      "expectations": [
+        { "kind": "equals", "path": "distribution.format", "value": "blog-post" },
+        { "kind": "minLength", "path": "audience.role", "value": 5 },
+        { "kind": "gte", "path": "structure.0.heading", "value": 0 }
+      ]
+    },
+    {
+      "name": "narrow LinkedIn post",
+      "input": {
+        "topic": "What we got wrong about agentic AI in the first 6 months and what changed",
+        "audience": "CTOs at mid-market SaaS who are evaluating AI investments",
+        "format": "linkedin-long-form",
+        "wordCountTarget": "600-800"
+      },
+      "expectations": [
+        { "kind": "equals", "path": "distribution.format", "value": "linkedin-long-form" }
+      ]
+    }
+  ]
+}

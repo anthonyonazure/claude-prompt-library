@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "properties": {
+    "narrativeSummary": {
+      "type": "string",
+      "description": "2-3 sentences capturing what the meeting was about, what happened, what's next."
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "decision": { "type": "string" },
+          "rationale": { "type": "string", "description": "Why this was decided, if stated. Empty string if not stated." }
+        },
+        "required": ["decision", "rationale"]
+      }
+    },
+    "actionItems": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "task": { "type": "string" },
+          "owner": { "type": "string", "description": "Verbatim name from transcript. Empty string if not stated." },
+          "dueDate": { "type": "string", "description": "As stated in transcript. Use empty string if not given." }
+        },
+        "required": ["task", "owner", "dueDate"]
+      }
+    },
+    "openQuestions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+  },
+  "required": ["narrativeSummary", "decisions", "actionItems", "openQuestions", "confidence"]
+}

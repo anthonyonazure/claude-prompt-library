@@ -1,0 +1,40 @@
+{
+  "prompt": "prompts/sales/demo-follow-up.md",
+  "cases": [
+    {
+      "name": "good demo with clear next step",
+      "input": {
+        "prospect": { "name": "Sara Kapoor", "role": "Head of Operations at Northwind Tea Co." },
+        "statedNeed": "Daily ops dashboard that pulls Shopify + Klaviyo + ShipStation into one view for the morning leadership review.",
+        "demoed": [
+          "Live data sync from a sandbox Shopify store with under 30s end-to-end latency",
+          "Mobile-friendly read view they can check on phone before the 7am huddle"
+        ],
+        "reactionsAndQuestions": [
+          "She asked specifically about export to PDF for board materials",
+          "She raised concern about how the dashboard handles SKU additions automatically"
+        ],
+        "agreedNextStep": "Send proposal by end of week; book a 30-minute review call for next Tuesday"
+      },
+      "expectations": [
+        { "kind": "minLength", "path": "email.subject", "value": 4 },
+        { "kind": "maxLength", "path": "email.subject", "value": 80 },
+        { "kind": "minLength", "path": "email.body", "value": 400 },
+        { "kind": "maxLength", "path": "email.body", "value": 1200 }
+      ]
+    },
+    {
+      "name": "demo with no clear next step",
+      "input": {
+        "prospect": { "name": "Mark Travers", "role": "Procurement Lead at a mid-market hospital" },
+        "statedNeed": "Vague — wanted to 'see what's out there'.",
+        "demoed": ["Standard product overview"],
+        "reactionsAndQuestions": ["Polite. No specific reactions."],
+        "agreedNextStep": "no clear next step"
+      },
+      "expectations": [
+        { "kind": "equals", "path": "forecastable", "value": false }
+      ]
+    }
+  ]
+}

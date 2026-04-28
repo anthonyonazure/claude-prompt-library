@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "properties": {
+    "executiveSummary": { "type": "string", "description": "2-3 sentences." },
+    "approach": {
+      "type": "array",
+      "description": "3-5 bullets describing the actual method.",
+      "items": { "type": "string" }
+    },
+    "deliverables": {
+      "type": "array",
+      "items": { "type": "string", "description": "Specific verifiable artifact." }
+    },
+    "timeline": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "phase": { "type": "string" },
+          "duration": { "type": "string", "description": "e.g. '2 weeks', '5-7 business days'" },
+          "outcome": { "type": "string" }
+        },
+        "required": ["phase", "duration", "outcome"]
+      }
+    },
+    "investment": {
+      "type": "object",
+      "properties": {
+        "structure": { "type": "string", "enum": ["fixed-price", "hourly", "phased", "retainer"] },
+        "amount": { "type": "string", "description": "e.g. '$8,500', '$120/hour', '$3,000-$4,000 per phase'" },
+        "assumptions": { "type": "string" }
+      },
+      "required": ["structure", "amount", "assumptions"]
+    },
+    "whyThisApproach": { "type": "string", "description": "2-3 sentences acknowledging alternatives and explaining the choice." },
+    "assumptionsAndQuestions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Missing info or assumptions worth flagging to the prospect before they sign."
+    },
+    "shouldDisqualify": {
+      "type": "boolean",
+      "description": "True when the request is better served by an off-the-shelf tool or no-code platform."
+    },
+    "disqualifyReason": { "type": "string", "description": "Empty string when shouldDisqualify is false." }
+  },
+  "required": [
+    "executiveSummary",
+    "approach",
+    "deliverables",
+    "timeline",
+    "investment",
+    "whyThisApproach",
+    "assumptionsAndQuestions",
+    "shouldDisqualify",
+    "disqualifyReason"
+  ]
+}

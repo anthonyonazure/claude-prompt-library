@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "properties": {
+    "workingTitle": { "type": "string" },
+    "audience": {
+      "type": "object",
+      "properties": {
+        "role": { "type": "string" },
+        "context": { "type": "string", "description": "Company size, industry, situation." },
+        "painPoint": { "type": "string" }
+      },
+      "required": ["role", "context", "painPoint"]
+    },
+    "readersJobToBeDone": { "type": "string" },
+    "keyMessages": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": { "type": "string" }
+    },
+    "structure": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "properties": {
+          "heading": { "type": "string" },
+          "summary": { "type": "string" }
+        },
+        "required": ["heading", "summary"]
+      }
+    },
+    "requiredEvidence": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "distribution": {
+      "type": "object",
+      "properties": {
+        "format": { "type": "string", "enum": ["blog-post", "linkedin-long-form", "gated-whitepaper", "sales-deck-handout", "email-newsletter", "video-script"] },
+        "wordCountRange": { "type": "string", "description": "e.g. '900-1200 words'" },
+        "primaryCta": { "type": "string" }
+      },
+      "required": ["format", "wordCountRange", "primaryCta"]
+    },
+    "outOfScope": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["workingTitle", "audience", "readersJobToBeDone", "keyMessages", "structure", "requiredEvidence", "distribution", "outOfScope"]
+}
