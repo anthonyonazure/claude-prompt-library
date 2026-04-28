@@ -110,9 +110,17 @@ mkdir -p prompts/your-category
 pnpm eval --prompt your-prompt
 ```
 
+## Security
+
+Small attack surface (developer CLI, no network server), but the obvious sharp edges are filed:
+
+- **Path traversal in expectation walks** — `getPath()` in `src/expectations.ts` refuses to traverse `__proto__`, `constructor`, or `prototype`. Eval suites are author-controlled, but if you ever import third-party suites this matters.
+- **CLI input** — `JSON.parse` on user input is wrapped in try/catch with a clean error message instead of stack-trace info disclosure.
+- **Secret hygiene** — `.env` is gitignored, `.env.example` uses placeholder, no `console.log` of `process.env.ANTHROPIC_API_KEY` anywhere.
+
 ## Tests
 
-22 unit tests cover the prompt loader (frontmatter parsing, schema discovery, error cases), the eval expectation matcher (every supported expectation kind), and a structural check that every shipped prompt has a valid sibling schema and required frontmatter. Runs in CI on every push and pull request.
+25 unit tests cover the prompt loader (frontmatter parsing, schema discovery, error cases), the eval expectation matcher including prototype-pollution refusals, and a structural check that every shipped prompt has a valid sibling schema and required frontmatter. Runs in CI on every push and pull request.
 
 ```bash
 pnpm test         # unit tests, no API spend

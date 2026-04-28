@@ -19,8 +19,14 @@ async function main() {
   }
 
   const prompt = await loadPrompt(promptPath);
-  const input = JSON.parse(inputJson);
-  const result = await runPrompt(prompt, input, { apiKey });
+  let input: unknown;
+  try {
+    input = JSON.parse(inputJson);
+  } catch (err) {
+    console.error(`Invalid JSON input: ${(err as Error).message}`);
+    process.exit(1);
+  }
+  const result = await runPrompt(prompt, input as Record<string, unknown>, { apiKey });
 
   console.log(JSON.stringify(result.output, null, 2));
   console.error(
