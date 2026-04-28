@@ -7,6 +7,8 @@
 
 **Production-ready Claude prompts with structured outputs and a deterministic eval harness.** Targeted at sales, research, and outreach workflows.
 
+> **Watch a 60-second walkthrough →** _(Loom)_
+
 Most prompt repos are either a copy-paste collection of one-liners or a tutorial that teaches concepts but doesn't ship anything you can run. This is neither — every prompt is a real `.md` file with a JSON schema, backed by a TypeScript runner that calls Claude with tool-use forcing, and covered by eval cases that score outputs deterministically.
 
 So when you tweak a prompt, you can immediately see whether you improved or regressed.
