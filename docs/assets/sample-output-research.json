@@ -1,0 +1,36 @@
+{
+  "industry": {
+    "sector": "Wealth management / SEC-registered investment advisor (RIA)",
+    "valueProp": "Fiduciary financial planning specialized for outdoor-industry founders",
+    "competitors": ["Mariner Wealth Advisors", "Mercer Advisors", "boutique sector-focused RIAs"],
+    "inferred": false
+  },
+  "recentSignals": [
+    {
+      "signal": "Hired their first compliance lead in October",
+      "implication": "Building out compliance infrastructure suggests AUM growth and regulatory maturity — typical trigger for compliance workflow tooling."
+    },
+    {
+      "signal": "Three open operations roles posted last week",
+      "implication": "Operations team scaling. Workflow tooling decisions likely being made in this 60-90 day window."
+    },
+    {
+      "signal": "Recent expansion to Denver and Salt Lake City",
+      "implication": "Multi-office growth introduces process-consistency challenges that operational tooling addresses."
+    }
+  ],
+  "buyingCommittee": [
+    { "role": "economic", "likelyTitle": "Founder/CEO (Anjali Rao)" },
+    { "role": "user", "likelyTitle": "Head of Client Operations (Marcus DePaul)" },
+    { "role": "technical", "likelyTitle": "Newly hired Compliance Lead" },
+    { "role": "gatekeeper", "likelyTitle": "Executive Assistant or Chief of Staff" }
+  ],
+  "culturalFit": {
+    "tone": "mission-driven",
+    "evidence": "Sector-specialized RIA serving outdoor-industry founders implies values-aligned positioning. Geographic expansion to Denver/SLC reinforces outdoor-ecosystem identity. Tone should be substantive and values-aware, not corporate."
+  },
+  "tier": "A",
+  "tierRationale": "Three converging signals (compliance hire, operations role openings, multi-office expansion) align directly with the offer's target trigger. Buying committee is identifiable. Cultural fit suggests they'll respond to a substantive, non-templated approach.",
+  "outreachAngle": "Reference the October compliance hire and the open ops roles together: 'Most RIAs we work with bring on a compliance lead and discover their workflow tooling can't keep up with the new oversight cadence — happened with [reference firm] last quarter. Worth comparing notes with Marcus before your new hire is fully ramped?' This is falsifiable (they did hire), specific (compliance + ops), and offers value (peer comparison) before asking for time.",
+  "confidence": 0.78
+}

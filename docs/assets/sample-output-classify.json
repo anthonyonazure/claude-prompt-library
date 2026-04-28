@@ -1,0 +1,25 @@
+{
+  "tier": "B",
+  "criteriaMet": {
+    "decisionMakerTitle": true,
+    "companyFit": false,
+    "buyingSignal": false,
+    "reachable": true
+  },
+  "reasoning": {
+    "positiveEvidence": [
+      "CTO is unambiguously a decision-maker title for a technical purchase",
+      "Email and LinkedIn both available — fully reachable",
+      "Industry (analytics consulting) is plausibly adjacent to data governance — could have client-driven need"
+    ],
+    "counterEvidence": [
+      "4-employee company is well below typical enterprise data governance buyer profile (usually 200+ employees)",
+      "$80k starting price is likely 50-100% of this company's annual software budget",
+      "No recent activity means no observable buying trigger — purely cold outreach",
+      "CTO at a 4-person company is also the implementer — buy/build calculus tilts toward build or open-source",
+      "Analytics consultancies typically resell or recommend to clients rather than buy enterprise tools themselves"
+    ]
+  },
+  "confidence": 0.72,
+  "nextStep": "monitor"
+}

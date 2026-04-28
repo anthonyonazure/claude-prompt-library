@@ -1,0 +1,26 @@
+$ pnpm eval
+
+[suite] prompts/classify/lead-tier.md
+  - clear A — VP Eng at fit company with hiring signal...
+  - clear C — wrong title, wrong industry, no signal...
+  - ambiguous B — title is senior but company is tiny...
+
+[suite] prompts/outreach/personalize-email.md
+  - specific reference present — must be used...
+  - no specific reference available — must admit it...
+
+[suite] prompts/research/company-research.md
+  - clear A — known company, real signal, fit angle...
+  - no signal — should not invent one...
+
+=== Eval Results ===
+
+[PASS] lead-tier.md :: clear A — VP Eng at fit company with hiring signal (1842ms)
+[PASS] lead-tier.md :: clear C — wrong title, wrong industry, no signal (1601ms)
+[PASS] lead-tier.md :: ambiguous B — title is senior but company is tiny (2104ms)
+[PASS] personalize-email.md :: specific reference present — must be used (3217ms)
+[PASS] personalize-email.md :: no specific reference available — must admit it (2455ms)
+[PASS] company-research.md :: clear A — known company, real signal, fit angle (4108ms)
+[PASS] company-research.md :: no signal — should not invent one (2890ms)
+
+7/7 cases passed
