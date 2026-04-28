@@ -1,50 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import type { Expectation } from './types.js';
-
-function getPath(obj: unknown, path: string): unknown {
-  const parts = path.split('.');
-  let cur: unknown = obj;
-  for (const p of parts) {
-    if (cur && typeof cur === 'object') {
-      cur = (cur as Record<string, unknown>)[p];
-    } else {
-      return undefined;
-    }
-  }
-  return cur;
-}
-
-function check(output: unknown, expectations: Expectation[]): string[] {
-  const failures: string[] = [];
-  for (const exp of expectations) {
-    const value = getPath(output, exp.path);
-    switch (exp.kind) {
-      case 'equals':
-        if (value !== exp.value) failures.push(`${exp.path} not equal`);
-        break;
-      case 'contains':
-        if (typeof value !== 'string' || !value.toLowerCase().includes(exp.value.toLowerCase()))
-          failures.push(`${exp.path} not contains`);
-        break;
-      case 'oneOf':
-        if (!exp.values.includes(value as string)) failures.push(`${exp.path} not oneOf`);
-        break;
-      case 'minLength':
-        if (typeof value !== 'string' || value.length < exp.value) failures.push(`${exp.path} below minLength`);
-        break;
-      case 'maxLength':
-        if (typeof value !== 'string' || value.length > exp.value) failures.push(`${exp.path} above maxLength`);
-        break;
-      case 'gte':
-        if (typeof value !== 'number' || value < exp.value) failures.push(`${exp.path} below gte`);
-        break;
-      case 'lte':
-        if (typeof value !== 'number' || value > exp.value) failures.push(`${exp.path} above lte`);
-        break;
-    }
-  }
-  return failures;
-}
+import { check } from './expectations.js';
 
 describe('check expectations', () => {
   const sample = {
@@ -112,5 +67,17 @@ describe('check expectations', () => {
       { kind: 'gte', path: 'confidence', value: 0.99 },
     ]);
     expect(failures).toHaveLength(2);
+  });
+
+  it('refuses to traverse __proto__ in path', () => {
+    expect(check(sample, [{ kind: 'equals', path: '__proto__.toString', value: 'foo' }])).toHaveLength(1);
+  });
+
+  it('refuses to traverse constructor in path', () => {
+    expect(check(sample, [{ kind: 'equals', path: 'constructor.name', value: 'Object' }])).toHaveLength(1);
+  });
+
+  it('refuses to traverse prototype in path', () => {
+    expect(check(sample, [{ kind: 'equals', path: 'prototype.x', value: 'y' }])).toHaveLength(1);
   });
 });
