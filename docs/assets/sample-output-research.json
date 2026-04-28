@@ -1,36 +1,53 @@
 {
   "industry": {
-    "sector": "Wealth management / SEC-registered investment advisor (RIA)",
-    "valueProp": "Fiduciary financial planning specialized for outdoor-industry founders",
-    "competitors": ["Mariner Wealth Advisors", "Mercer Advisors", "boutique sector-focused RIAs"],
+    "sector": "Registered Investment Advisory (RIA) / Wealth Management",
+    "valueProp": "Boutique mid-market RIA specializing in outdoor industry founders — a niche HNW/UHNW client base with concentrated equity and liquidity-event complexity",
+    "competitors": [
+      "Cetera",
+      "Focus Financial Partners",
+      "Mariner Wealth Advisors",
+      "Savant Wealth Management"
+    ],
     "inferred": false
   },
   "recentSignals": [
     {
-      "signal": "Hired their first compliance lead in October",
-      "implication": "Building out compliance infrastructure suggests AUM growth and regulatory maturity — typical trigger for compliance workflow tooling."
+      "signal": "Hired first dedicated compliance lead in October",
+      "implication": "Firm is formalizing compliance infrastructure for the first time — classic trigger for workflow tooling purchases; new compliance hire will immediately feel the pain of manual processes and will want to own a tool decision early."
     },
     {
-      "signal": "Three open operations roles posted last week",
-      "implication": "Operations team scaling. Workflow tooling decisions likely being made in this 60-90 day window."
+      "signal": "Posted three open operations roles last week",
+      "implication": "Rapid ops headcount growth signals scaling pains; a larger ops team makes per-seat workflow software easier to justify and more necessary."
     },
     {
-      "signal": "Recent expansion to Denver and Salt Lake City",
-      "implication": "Multi-office growth introduces process-consistency challenges that operational tooling addresses."
+      "signal": "Announced expansion to Denver and Salt Lake City offices",
+      "implication": "Multi-office RIAs face coordination and audit-trail complexity that single-office firms don't — compliance workflow software becomes structurally more valuable."
     }
   ],
   "buyingCommittee": [
-    { "role": "economic", "likelyTitle": "Founder/CEO (Anjali Rao)" },
-    { "role": "user", "likelyTitle": "Head of Client Operations (Marcus DePaul)" },
-    { "role": "technical", "likelyTitle": "Newly hired Compliance Lead" },
-    { "role": "gatekeeper", "likelyTitle": "Executive Assistant or Chief of Staff" }
+    {
+      "role": "economic",
+      "likelyTitle": "Founder/CEO (Anjali Rao)"
+    },
+    {
+      "role": "technical",
+      "likelyTitle": "Head of Client Operations (Marcus DePaul)"
+    },
+    {
+      "role": "user",
+      "likelyTitle": "Compliance Lead (newly hired, name unknown)"
+    },
+    {
+      "role": "gatekeeper",
+      "likelyTitle": "Head of Client Operations (Marcus DePaul)"
+    }
   ],
   "culturalFit": {
     "tone": "mission-driven",
-    "evidence": "Sector-specialized RIA serving outdoor-industry founders implies values-aligned positioning. Geographic expansion to Denver/SLC reinforces outdoor-ecosystem identity. Tone should be substantive and values-aware, not corporate."
+    "evidence": "Niche focus on outdoor industry founders signals identity-driven firm-building, not AUM-at-all-costs growth. Boutique positioning and founder-led structure suggest high-trust, relationship-first culture. 'Trailhead' branding reinforces deliberate, values-laden identity. Outreach should feel like a peer conversation, not a vendor pitch."
   },
   "tier": "A",
-  "tierRationale": "Three converging signals (compliance hire, operations role openings, multi-office expansion) align directly with the offer's target trigger. Buying committee is identifiable. Cultural fit suggests they'll respond to a substantive, non-templated approach.",
-  "outreachAngle": "Reference the October compliance hire and the open ops roles together: 'Most RIAs we work with bring on a compliance lead and discover their workflow tooling can't keep up with the new oversight cadence — happened with [reference firm] last quarter. Worth comparing notes with Marcus before your new hire is fully ramped?' This is falsifiable (they did hire), specific (compliance + ops), and offers value (peer comparison) before asking for time.",
-  "confidence": 0.78
+  "tierRationale": "Three concurrent signals — first compliance hire, multi-office expansion, and ops team buildout — converge exactly on the problem our software solves for SEC-registered RIAs in the 50-500 household range. The compliance lead is almost certainly in 30-day onboarding and forming opinions on tooling right now. Window is narrow and hot.",
+  "outreachAngle": "Address the newly hired compliance lead (or Marcus DePaul as gatekeeper) directly: \"Trailhead just brought on its first compliance lead the same month you announced two new office locations — that's a tough combination to land in on day one. We work with several single-compliance-officer RIAs that went multi-office and built their SEC exam readiness workflows in our platform before their first cross-office review. Worth a 20-minute conversation before the Q1 audit prep cycle kicks off?\"",
+  "confidence": 0.82
 }

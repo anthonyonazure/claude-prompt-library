@@ -1,25 +1,26 @@
 {
-  "tier": "B",
+  "tier": "C",
   "criteriaMet": {
     "decisionMakerTitle": true,
-    "companyFit": false,
+    "companyFit": true,
     "buyingSignal": false,
     "reachable": true
   },
   "reasoning": {
     "positiveEvidence": [
-      "CTO is unambiguously a decision-maker title for a technical purchase",
-      "Email and LinkedIn both available — fully reachable",
-      "Industry (analytics consulting) is plausibly adjacent to data governance — could have client-driven need"
+      "CTO title is a decision-maker role for technology/data infrastructure decisions",
+      "Analytics consulting aligns with the data governance problem domain",
+      "Email and LinkedIn profile are reachable channels",
+      "Enterprise data governance suite fits an analytics-focused company"
     ],
     "counterEvidence": [
-      "4-employee company is well below typical enterprise data governance buyer profile (usually 200+ employees)",
-      "$80k starting price is likely 50-100% of this company's annual software budget",
-      "No recent activity means no observable buying trigger — purely cold outreach",
-      "CTO at a 4-person company is also the implementer — buy/build calculus tilts toward build or open-source",
-      "Analytics consultancies typically resell or recommend to clients rather than buy enterprise tools themselves"
+      "Company size is 4 employees — cannot afford $80k/year enterprise software; would consume 20%+ of total likely revenue or budget",
+      "4-person consultancy likely outsources data governance or runs lean infrastructure; not a buyer for enterprise suites",
+      "CTO at micro-company is often founder/solo tech decision-maker, not a role that procures expensive enterprise tools",
+      "No recent activity signal indicates no active buying intent or pain point urgency",
+      "Title and company fit are contradicted by economic reality and stage mismatch"
     ]
   },
-  "confidence": 0.72,
-  "nextStep": "monitor"
+  "confidence": 0.75,
+  "nextStep": "skip"
 }
