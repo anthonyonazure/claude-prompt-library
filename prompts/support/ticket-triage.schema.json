@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "severity": { "type": "string", "enum": ["p0", "p1", "p2", "p3"] },
+    "category": {
+      "type": "string",
+      "enum": ["bug", "account", "billing", "how-to", "feature-request", "abuse", "other"]
+    },
+    "sentiment": {
+      "type": "string",
+      "enum": ["frustrated", "neutral", "confused", "angry", "positive"]
+    },
+    "suggestedRoute": {
+      "type": "string",
+      "enum": ["engineering", "success", "billing", "sales", "auto-respond"]
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "0-5 short labels that help search/grouping (e.g. 'export', 'safari', 'churn-risk')."
+    },
+    "firstDraftResponse": {
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "body": { "type": "string", "description": "Reviewable first-draft reply, 50-150 words." }
+      },
+      "required": ["subject", "body"]
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+  },
+  "required": ["severity", "category", "sentiment", "suggestedRoute", "tags", "firstDraftResponse", "confidence"]
+}

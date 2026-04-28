@@ -1,0 +1,39 @@
+{
+  "prompt": "prompts/sales/proposal-generator.md",
+  "cases": [
+    {
+      "name": "real custom-build engagement",
+      "input": {
+        "prospect": {
+          "name": "Northwind Tea Co.",
+          "industry": "specialty food/beverage e-commerce",
+          "size": "12 employees, ~$3M ARR"
+        },
+        "needSummary": "They want a daily report that pulls Shopify orders + Klaviyo email metrics + ShipStation status into one dashboard the founders check at 7am. Currently three browser tabs and a manual spreadsheet.",
+        "constraints": "Must be ready in 6 weeks before holiday peak; founders are non-technical; budget mentioned ~$10k.",
+        "ourCapability": "Full-stack TypeScript, Vercel, Postgres. Have done similar Shopify integrations."
+      },
+      "expectations": [
+        { "kind": "equals", "path": "shouldDisqualify", "value": false },
+        { "kind": "minLength", "path": "executiveSummary", "value": 80 }
+      ]
+    },
+    {
+      "name": "should disqualify — better served by no-code",
+      "input": {
+        "prospect": {
+          "name": "Solo agency",
+          "industry": "freelance copywriting",
+          "size": "1 person"
+        },
+        "needSummary": "Wants a Google Sheet of leads automatically populated from a Typeform submission, with email notification.",
+        "constraints": "Budget ~$200, ready next week.",
+        "ourCapability": "Custom builds typically $3k+."
+      },
+      "expectations": [
+        { "kind": "equals", "path": "shouldDisqualify", "value": true },
+        { "kind": "minLength", "path": "disqualifyReason", "value": 30 }
+      ]
+    }
+  ]
+}

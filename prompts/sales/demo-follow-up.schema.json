@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "properties": {
+    "email": {
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "body": { "type": "string", "description": "100-150 words." }
+      },
+      "required": ["subject", "body"]
+    },
+    "internalNotes": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 5,
+      "items": { "type": "string" }
+    },
+    "riskFlags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "dealStage": {
+      "type": "string",
+      "enum": ["discovery", "demo-complete", "evaluation", "proposal", "verbal", "closed-won", "closed-lost", "stalled"]
+    },
+    "forecastable": {
+      "type": "boolean",
+      "description": "True only if the deal has a named champion, an authority path, a funded budget, and a timeline."
+    },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+  },
+  "required": ["email", "internalNotes", "riskFlags", "dealStage", "forecastable", "confidence"]
+}
