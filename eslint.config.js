@@ -5,11 +5,22 @@ export default tseslint.config(
   // root, so a nested build output (packages/*/dist, ticker/dist) was linted as
   // if it were source and buried the real findings under hundreds of errors
   // about generated code.
-  { ignores: ["**/dist/**", "**/build/**", "**/node_modules/**", "**/*.cjs"] },
+  { ignores: ["**/dist/**", "**/build/**", "**/node_modules/**", "**/*.cjs", "**/.stryker-tmp/**"] },
   js.configs.recommended,
   ...tseslint.configs.recommendedTypeChecked,
   {
-    languageOptions: { parserOptions: { projectService: true, tsconfigRootDir: import.meta.dirname } },
+    // Config files (eslint.config.js, vitest.config.ts) live outside tsconfig's
+    // "include", so the project service cannot type them and reports a parsing
+    // error rather than a real finding. allowDefaultProject lints them with an
+    // inferred default program instead of failing the gate on a config quirk.
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ["*.js", "*.mjs", "*.cjs", "*.ts", "*.config.js", "*.config.ts"],
+        },
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     rules: {
       "@typescript-eslint/no-floating-promises": "error",
       "@typescript-eslint/no-misused-promises": "error",

@@ -1,0 +1,11 @@
+[test]
+# Stryker's dry run executes the suite against INSTRUMENTED source: every mutant
+# is wrapped in a switch that the un-mutated run never enters, so the coverage
+# number is mechanically lower and means nothing. With the real bunfig.toml in
+# play, that fake number tripped the coverage threshold, bun test exited
+# non-zero, and Stryker read a passing suite as "tests failed in the initial
+# run" — which is exactly what the mutation job was reporting.
+#
+# This config exists only for the mutation runner. The real coverage gate still
+# lives in bunfig.toml and still runs, unchanged, in the node job.
+coverage = false

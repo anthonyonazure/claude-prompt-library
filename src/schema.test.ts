@@ -34,7 +34,7 @@ describe('shipped prompts', () => {
     for await (const promptPath of findPromptFiles(PROMPTS_DIR)) {
       const schemaPath = resolve(dirname(promptPath), basename(promptPath, '.md') + '.schema.json');
       const raw = await readFile(schemaPath, 'utf8');
-      const parsed = JSON.parse(raw);
+      const parsed = JSON.parse(raw) as Record<string, unknown>;
       expect(parsed.type, `${schemaPath}`).toBe('object');
       expect(parsed.properties, `${schemaPath}`).toBeTruthy();
     }

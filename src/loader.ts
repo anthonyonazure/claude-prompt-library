@@ -22,7 +22,7 @@ export async function loadPrompt(promptPath: string): Promise<PromptDefinition> 
 
   const schemaPath = resolve(dirname(absPath), basename(absPath, '.md') + '.schema.json');
   const schemaRaw = await readFile(schemaPath, 'utf8');
-  const inputSchema = JSON.parse(schemaRaw);
+  const inputSchema = JSON.parse(schemaRaw) as Record<string, unknown>;
 
   return {
     path: promptPath,
