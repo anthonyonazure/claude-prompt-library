@@ -5,3 +5,7 @@ dist/
 *.log
 .DS_Store
 .eval-runs/
+# Stryker copies the whole project here to run mutants; it is generated output
+# and, left behind, the lint gate scans instrumented source instead of real source.
+.stryker-tmp/
+reports/mutation/

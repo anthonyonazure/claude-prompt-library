@@ -26,10 +26,10 @@ export function check(output: unknown, expectations: Expectation[]): string[] {
         break;
       case 'contains':
         if (typeof value !== 'string' || !value.toLowerCase().includes(exp.value.toLowerCase()))
-          failures.push(`${exp.path} expected to contain "${exp.value}", got "${value}"`);
+          failures.push(`${exp.path} expected to contain "${exp.value}", got ${JSON.stringify(value)}`);
         break;
       case 'oneOf':
-        if (!exp.values.includes(value as string)) failures.push(`${exp.path} expected one of ${JSON.stringify(exp.values)}, got ${JSON.stringify(value)}`);
+        if (!exp.values.includes(value)) failures.push(`${exp.path} expected one of ${JSON.stringify(exp.values)}, got ${JSON.stringify(value)}`);
         break;
       case 'minLength':
         if (typeof value !== 'string' || value.length < exp.value)
@@ -40,10 +40,10 @@ export function check(output: unknown, expectations: Expectation[]): string[] {
           failures.push(`${exp.path} expected length <= ${exp.value}, got ${typeof value === 'string' ? value.length : 'non-string'}`);
         break;
       case 'gte':
-        if (typeof value !== 'number' || value < exp.value) failures.push(`${exp.path} expected >= ${exp.value}, got ${value}`);
+        if (typeof value !== 'number' || value < exp.value) failures.push(`${exp.path} expected >= ${exp.value}, got ${JSON.stringify(value)}`);
         break;
       case 'lte':
-        if (typeof value !== 'number' || value > exp.value) failures.push(`${exp.path} expected <= ${exp.value}, got ${value}`);
+        if (typeof value !== 'number' || value > exp.value) failures.push(`${exp.path} expected <= ${exp.value}, got ${JSON.stringify(value)}`);
         break;
     }
   }
