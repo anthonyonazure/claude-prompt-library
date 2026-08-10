@@ -46,5 +46,8 @@
       "qs": ">=6.15.3",
       "vite": ">=8.2.1"
     }
+  },
+  "gauntlet": {
+    "coverageFloorPercent": 94
   }
 }
